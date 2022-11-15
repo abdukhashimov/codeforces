@@ -4,6 +4,10 @@
         "ostream": "cpp",
         "*.tcc": "cpp",
         "cmath": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "__split_buffer": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "vector": "cpp"
     }
 }

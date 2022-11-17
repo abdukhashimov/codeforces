@@ -1,35 +1,35 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
+#include <bits/stdc++.h>
 using namespace std;
+#define ll long long
+#define endl '\n'
+#define tc     \
+    ll tc;     \
+    cin >> tc; \
+    while (tc--)
+#define pb push_back
+#define mp make_pair
+const ll MOD = 1e9 + 7;
 
-void minimize_thickness(vector<int> &numbers)
+void fastio()
 {
-    sort(numbers.begin(), numbers.end(), greater<>());
-
-    for (auto &&i : numbers)
-    {
-        cout << i << endl;
-    }
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
 }
 
-int main(int argc, char const *argv[])
+void solve()
 {
-    int t, length, temp;
-    vector<int> numbers;
-    cin >> t;
-    for (int i = 0; i < t; i++)
-    {
-        cin >> length;
-        for (int i = 0; i < length; i++)
-        {
-            cin >> temp;
-            numbers.push_back(temp);
-        }
-    }
+}
 
-    minimize_thickness(numbers);
+int main()
+{
+    fastio();
+    ll t;
+    cin >> t;
+    for (ll i = 1; i <= t; i++)
+    {
+        solve();
+    }
 
     return 0;
 }

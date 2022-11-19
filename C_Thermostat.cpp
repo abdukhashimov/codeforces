@@ -17,48 +17,56 @@ void fastio()
     cout.tie(0);
 }
 
-int findMin(map<int, bool> numbers, int x, int dest, int max_num, int min_num)
+int findMin(map<int, bool> numbers, int x, int key, int r, int l, vector<int> items)
 {
-    if (numbers.find(dest) != numbers.end())
+    vector<int> nums;
+
+    if (numbers.find(key) != numbers.end())
     {
         return 0;
     }
 
-    for (auto &[key, value] : numbers)
+    if (numbers.size() == l - r)
     {
-        for (int i = x; i <= max_num; i++)
+        return -1;
+    }
+
+    for (auto &&item : items)
+    {
+        for (int i = x; i + item <= r; i++)
         {
-            if (key + i <= max_num)
+            if (numbers.find(i + item) == numbers.end())
             {
-                numbers[key + i] = true;
+                numbers[i + item] = true;
+                nums.push_back(i + item);
             }
         }
 
-        for (int i = min_num; i <= x; i++)
+        for (int i = x; item - i >= l; i++)
         {
-            if (i >= 0 && key - i <= max_num && key - i >= min_num)
+            if (numbers.find(item - i) == numbers.end())
             {
-                numbers[key - i] = true;
+                numbers[item - i] = true;
+                nums.push_back(item - i);
             }
         }
     }
 
-    for (auto &&key : numbers)
+    if (nums.size() == 0)
     {
-        cout << key.first << endl;
+        return -1;
     }
 
-    return 1 + findMin(numbers, x, dest, max_num, min_num);
+    return findMin(numbers, x, key, r, l, nums) + 1;
 }
 
 void solve()
 {
     int l, r, x, a, b;
     cin >> l >> r >> x >> a >> b;
-    map<int, bool> numbers = {
-        {a, true}};
+    map<int, bool> numbers = {{a, true}};
 
-    cout << findMin(numbers, x, b, r, l) << endl;
+    cout << findMin(numbers, x, b, r, l, {a}) << endl;
 }
 
 int main()

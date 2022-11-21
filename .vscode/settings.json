@@ -8,6 +8,16 @@
         "__split_buffer": "cpp",
         "deque": "cpp",
         "list": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "array": "cpp",
+        "forward_list": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "initializer_list": "cpp",
+        "ranges": "cpp",
+        "span": "cpp",
+        "stacktrace": "cpp",
+        "string_view": "cpp",
+        "valarray": "cpp"
     }
 }

@@ -17,56 +17,56 @@ void fastio()
     cout.tie(0);
 }
 
-int findMin(map<int, bool> numbers, int x, int key, int r, int l, vector<int> items)
-{
-    vector<int> nums;
-
-    if (numbers.find(key) != numbers.end())
-    {
-        return 0;
-    }
-
-    if (numbers.size() == l - r)
-    {
-        return -1;
-    }
-
-    for (auto &&item : items)
-    {
-        for (int i = x; i + item <= r; i++)
-        {
-            if (numbers.find(i + item) == numbers.end())
-            {
-                numbers[i + item] = true;
-                nums.push_back(i + item);
-            }
-        }
-
-        for (int i = x; item - i >= l; i++)
-        {
-            if (numbers.find(item - i) == numbers.end())
-            {
-                numbers[item - i] = true;
-                nums.push_back(item - i);
-            }
-        }
-    }
-
-    if (nums.size() == 0)
-    {
-        return -1;
-    }
-
-    return findMin(numbers, x, key, r, l, nums) + 1;
-}
-
 void solve()
 {
     int l, r, x, a, b;
     cin >> l >> r >> x >> a >> b;
-    map<int, bool> numbers = {{a, true}};
+    int d1 = abs(a - l);
+    int d2 = abs(r - a);
+    int d3 = abs(b - l);
+    int d4 = abs(r - b);
 
-    cout << findMin(numbers, x, b, r, l, {a}) << endl;
+    if (a == b)
+    {
+        cout << 0 << endl;
+    }
+    else if (abs(a - b) >= x)
+    {
+        cout << 1 << endl;
+    }
+    else if ((d1 < x && d2 < x) || (d3 < x && d4 < x))
+    {
+        cout << -1 << endl;
+    }
+    else
+    {
+        if (d1 < x)
+        {
+            if (d4 >= x)
+            {
+                cout << 2 << endl;
+            }
+            else
+            {
+                cout << 3 << endl;
+            }
+        }
+        else if (d2 < x)
+        {
+            if (d3 >= x)
+            {
+                cout << 2 << endl;
+            }
+            else
+            {
+                cout << 3 << endl;
+            }
+        }
+        else
+        {
+            cout << 2 << endl;
+        }
+    }
 }
 
 int main()

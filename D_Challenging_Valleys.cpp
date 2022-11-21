@@ -39,7 +39,7 @@ int challengingValleys(vector<int> arr, int len)
 
     if (check(arr, 0, len))
     {
-        return 0;
+        return 1;
     }
 
     for (int end = 0; end < len; end++)
